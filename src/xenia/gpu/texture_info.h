@@ -11,6 +11,7 @@
 #define XENIA_GPU_TEXTURE_INFO_H_
 
 #include <memory>
+#include <cstring>
 
 #include "xenia/base/assert.h"
 #include "xenia/gpu/ucode.h"

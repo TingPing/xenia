@@ -8,7 +8,6 @@ includedirs({
   ".",
   "src",
   "third_party",
-  "build_tools/third_party/gflags/src",
 })
 
 defines({
@@ -67,9 +66,10 @@ filter("configurations:Release")
 filter("platforms:Linux")
   system("linux")
   toolset("clang")
-  buildoptions({
-    "-std=c++14",
-  })
+  filter("not **.c")
+    buildoptions({
+      "-std=c++14",
+    })
 
 filter("platforms:Windows")
   system("windows")
@@ -168,9 +168,12 @@ solution("xenia")
   include("src/xenia/ui/gl")
   include("src/xenia/vfs")
 
-  include("third_party/capstone.lua")
   include("third_party/elemental-forms")
-  include("third_party/glew.lua")
   include("third_party/imgui.lua")
   include("third_party/xxhash.lua")
-  include("build_tools/third_party/gflags.lua")
+
+  filter("platforms:Windows")
+    include("third_party/capstone.lua")
+    include("third_party/glew.lua")
+    include("build_tools/third_party/gflags.lua")
+    includedirs("build_tools/third_party/gflags/src")

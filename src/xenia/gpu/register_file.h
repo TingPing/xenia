@@ -15,6 +15,8 @@
 namespace xe {
 namespace gpu {
 
+using std::size_t;
+
 enum Register {
 #define XE_GPU_REGISTER(index, type, name) XE_GPU_REG_##name = index,
 #include "xenia/gpu/register_table.inc"

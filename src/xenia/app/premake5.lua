@@ -12,7 +12,6 @@ project("xenia-app")
     "gflags",
     "xenia-apu",
     "xenia-apu-nop",
-    "xenia-apu-xaudio2",
     "xenia-base",
     "xenia-core",
     "xenia-cpu",
@@ -63,6 +62,9 @@ project("xenia-app")
     })
 
   filter("platforms:Windows")
+    links({
+        "xenia-apu-xaudio2",
+    })
     -- Only create the .user file if it doesn't already exist.
     local user_file = project_root.."/build/xenia-app.vcxproj.user"
     if not os.isfile(user_file) then

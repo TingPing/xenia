@@ -10,6 +10,7 @@
 #include "xenia/ui/gl/gl4_elemental_renderer.h"
 
 #include <memory>
+#include <cstring>
 
 #include "el/graphics/bitmap_fragment.h"
 #include "el/util/math.h"

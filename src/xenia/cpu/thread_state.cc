@@ -85,7 +85,7 @@ ThreadState::ThreadState(Processor* processor, uint32_t thread_id,
 
   // Allocate with 64b alignment.
   context_ =
-      reinterpret_cast<PPCContext*>(_aligned_malloc(sizeof(PPCContext), 64));
+      reinterpret_cast<PPCContext*>(aligned_alloc(sizeof(PPCContext), 64));
   assert_true(((uint64_t)context_ & 0x3F) == 0);
   std::memset(context_, 0, sizeof(PPCContext));
 
@@ -110,7 +110,7 @@ ThreadState::~ThreadState() {
     thread_state_ = nullptr;
   }
 
-  _aligned_free(context_);
+  free(context_);
   if (stack_allocated_) {
     memory()->LookupHeap(stack_address_)->Decommit(stack_address_, stack_size_);
   }
